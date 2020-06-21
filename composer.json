@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "gdg-fsa-community-manager-app",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "App para auxiliar na gestão de comunidades, desenvolvido pelo GDG FSA",
     "keywords": [
         "framework",
         "laravel"
