@@ -1,7 +1,7 @@
 {
     "name": "gdg-fsa-community-manager-app",
     "type": "project",
-    "description": "App para auxiliar na gestão de comunidades, desenvolvido pelo GDG FSA",
+    "description": "",
     "keywords": [
         "framework",
         "laravel"
