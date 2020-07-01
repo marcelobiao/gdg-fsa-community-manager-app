@@ -15,12 +15,11 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable(false);
-            $table->timestamp('date')->nullable(false);
-            $table->string('place')->nullable(false);
-            $table->string('city')->nullable(false);
+            $table->string('name');
+            $table->timestamp('date');
+            $table->string('place');
+            $table->string('city');
             $table->timestamps();
-            $table->softDeletes('deleted_at', 0);
         });
     }
 
