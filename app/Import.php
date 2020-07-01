@@ -15,4 +15,13 @@ class Import extends Model
     protected $rules = [
         'about' => ['required', 'max:255']
     ];
+
+    public function people(){
+        return $this->hasMany(People::class);
+    }
+
+    public function people_event(){
+        return $this->hasMany(People_event::class);
+    }
+
 }

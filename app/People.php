@@ -23,6 +23,10 @@ class People extends Model
     ];
 
     public function import(){
-        return $this->belongsTo('App\Import');
+        return $this->belongsTo(Import::class);
+    }
+
+    public function people_event(){
+        return $this->hasMany(People_event::class);
     }
 }

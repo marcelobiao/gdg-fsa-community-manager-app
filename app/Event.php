@@ -22,4 +22,8 @@ class Event extends Model
         'place' => ['required', 'max:255'],
         'city' => ['required', 'max:255']
     ];
+
+    public function people_event(){
+        return $this->hasMany(People_event::class);
+    }
 }
