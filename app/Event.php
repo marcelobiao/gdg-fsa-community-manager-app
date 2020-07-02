@@ -16,7 +16,7 @@ class Event extends Model
         'city'
     ];
 
-    protected $rules = [
+    public static $rules = [
         'name' => ['required', 'max:255'],
         'date' => ['required', 'date'],
         'place' => ['required', 'max:255'],
