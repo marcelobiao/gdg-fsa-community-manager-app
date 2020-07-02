@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('admin/')->namespace('Admin')->group(function(){
+    Route::prefix('events/')->group(function(){
+        Route::get("/", "EventController@index");
+        Route::get("{id}/", "EventController@show");
+        Route::post("/", "EventController@store");
+        Route::put("{id}/", "EventController@update");
+        Route::delete("{id}/", "EventController@destroy");
+    });
+
+});
