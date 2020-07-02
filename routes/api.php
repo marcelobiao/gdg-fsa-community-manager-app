@@ -26,5 +26,14 @@ Route::prefix('admin/')->namespace('Admin')->group(function(){
         Route::put("{id}/", "EventController@update");
         Route::delete("{id}/", "EventController@destroy");
     });
+    Route::prefix('people/')->group(function(){
+        Route::get("/", "PeopleController@index");
+        Route::get("{id}/", "PeopleController@show");
+        Route::post("/", "PeopleController@store");
+        Route::put("{id}/", "PeopleController@update");
+        Route::delete("{id}/", "PeopleController@destroy");
+    });
+
+});
 
 });
