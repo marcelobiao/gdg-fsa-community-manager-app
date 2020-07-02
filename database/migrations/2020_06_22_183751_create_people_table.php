@@ -18,7 +18,7 @@ class CreatePeopleTable extends Migration
             $table->string('email')->unique();
             $table->string('name');
             $table->string('about')->nullable(true);
-            $table->unsignedBigInteger('import_id');
+            $table->unsignedBigInteger('import_id')->nullable(true);
             $table->foreign('import_id')
                 ->references('id')->on('imports')
                 ->onDelete('cascade')

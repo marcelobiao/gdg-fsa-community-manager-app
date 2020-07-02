@@ -30,7 +30,7 @@ class CreatePeopleEventTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-                $table->integer('registration_order');
+            $table->integer('registration_order');
             $table->string('ticket_hash');
             $table->string('ticket_type');
             $table->decimal('ticket_value');
@@ -42,7 +42,7 @@ class CreatePeopleEventTable extends Migration
             $table->string('discount_code');
             $table->enum('payment_method', ['grátis', 'cartão de crédito', 'boleto bancário', 'adicionado manualmente']);
 
-            $table->unsignedBigInteger('import_id');
+            $table->unsignedBigInteger('import_id')->nullable(true);
             $table->foreign('import_id')
                 ->references('id')
                 ->on('imports')
