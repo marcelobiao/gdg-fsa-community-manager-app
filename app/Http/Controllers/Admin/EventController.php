@@ -88,7 +88,7 @@ class EventController extends Controller
         try{
             $event = $this->model->find($id);
             throw_if(empty($event), new EventException(EventException::EVENT_NOT_FOUND));
-            $response = $event->destroy();
+            $event->delete();
             return response()->json('Event removed');
         }catch(EventException $ex){
             return response()->json(['error' => $ex->getMessage()], Response::HTTP_BAD_REQUEST);
