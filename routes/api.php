@@ -33,6 +33,13 @@ Route::prefix('admin/')->namespace('Admin')->group(function(){
         Route::put("{id}/", "PeopleController@update");
         Route::delete("{id}/", "PeopleController@destroy");
     });
+    Route::prefix('peopleEvents/')->group(function(){
+        Route::get("/", "PeopleEventController@index");
+        Route::get("{id}/", "PeopleEventController@show");
+        Route::post("/", "PeopleEventController@store");
+        Route::put("{id}/", "PeopleEventController@update");
+        Route::delete("{id}/", "PeopleEventController@destroy");
+    });
 
 });
 
