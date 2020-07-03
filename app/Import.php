@@ -13,7 +13,8 @@ class Import extends Model
     ];
 
     protected $rules = [
-        'about' => ['required', 'max:255']
+        'about' => ['required', 'max:255'],
+        'file' => ['required', 'file']
     ];
 
     public function people(){
