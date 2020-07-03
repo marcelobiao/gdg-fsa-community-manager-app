@@ -45,7 +45,7 @@ class EventController extends Controller
     public function store(Request $request){
         try{
             $data = $request->all();
-            $validator = Validator::make($data, Event::$rules);
+            $validator = Validator::make($data, $this->model->rules());
 
             if ($validator->fails()) {
                 return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
@@ -68,7 +68,7 @@ class EventController extends Controller
 
             $data = $request->all();
             $event->fill($data);
-            $validator = Validator::make($event->toArray(), Event::$rules);
+            $validator = Validator::make($event->toArray(),  $event->rules());
 
             if ($validator->fails()) {
                 return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
