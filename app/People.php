@@ -25,7 +25,6 @@ class People extends Model
         ];
     }
 
-    //Rule::unique('users')->ignore($id) ,
     public function import(){
         return $this->belongsTo(Import::class);
     }
