@@ -15,12 +15,14 @@ class Event extends Model
         'city'
     ];
 
-    public static $rules = [
-        'name' => ['required', 'max:255'],
-        'date' => ['required', 'date'],
-        'place' => ['required', 'max:255'],
-        'city' => ['required', 'max:255']
-    ];
+    public function rules(){
+        return [
+            'name' => ['required', 'max:255'],
+            'date' => ['required', 'date'],
+            'place' => ['required', 'max:255'],
+            'city' => ['required', 'max:255']
+        ];
+    }
 
     public function people_event(){
         return $this->hasMany(People_event::class);
