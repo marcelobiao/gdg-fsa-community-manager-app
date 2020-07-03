@@ -27,13 +27,14 @@ class People_event extends Model
         'import_id',
     ];
 
-    protected $rules = [
+    public function rules(){
+        return [
         'event_id'              => ['required', 'exists:events,id'],
         'people_id'             => ['required', 'exists:people,id'],
         'registration_order'    => ['required', 'integer'],
         'ticket_hash'           => ['required', 'max:255'],
         'ticket_type'           => ['required', 'max:255'],
-        'ticket_value'          => ['required', 'decimal'],
+        'ticket_value'          => ['required', 'numeric'],
         'purchase_date'         => ['required', 'date'],
         'order_hash'            => ['required', 'max:255'],
         'payment_status'        => ['required', 'in:Aprovado,Não pago,Cancelado'],
@@ -42,7 +43,8 @@ class People_event extends Model
         'discount_code'         => ['required', 'max:255'],
         'payment_method'        => ['required', 'in:grátis,cartão de crédito,boleto bancário,adicionado manualmente'],
         'import_id'             => ['required', 'exists:imports,id'],
-    ];
+        ];
+    }
 
     public function import(){
         return $this->belongsTo(Import::class);
