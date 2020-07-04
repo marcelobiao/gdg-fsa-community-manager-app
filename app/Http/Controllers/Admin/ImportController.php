@@ -59,7 +59,7 @@ class ImportController extends Controller
             $event_id = 1;
             $this->symplaFileImport($file, $event_id, $import->id);
 
-            return response()->json("Okaqui");
+            return response()->json("Registros importados com sucesso!");
         }catch(ImportException $ex){
             return response()->json(['error' => $ex->getMessage()], Response::HTTP_BAD_REQUEST);
         }catch(Exception $ex){
