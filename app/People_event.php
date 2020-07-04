@@ -39,10 +39,10 @@ class People_event extends Model
         'order_hash'            => ['required', 'max:255'],
         'payment_status'        => ['required', 'in:Aprovado,Não pago,Cancelado'],
         'check_in'              => ['required', 'boolean'],
-        'check_in_date'         => ['required', 'date'],
-        'discount_code'         => ['required', 'max:255'],
-        'payment_method'        => ['required', 'in:grátis,cartão de crédito,boleto bancário,adicionado manualmente'],
-        'import_id'             => ['required', 'exists:imports,id'],
+        'check_in_date'         => ['date'],
+        'discount_code'         => ['max:255'],
+        'payment_method'        => ['required', 'in:gratis,cartão de crédito,boleto bancário,adicionado manualmente'],
+        'import_id'             => ['exists:imports,id'],
         ];
     }
 

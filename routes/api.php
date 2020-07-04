@@ -48,5 +48,3 @@ Route::prefix('admin/')->namespace('Admin')->group(function(){
         Route::delete("{id}/", "ImportController@destroy");
     });
 });
-
-});
