@@ -40,7 +40,7 @@ Route::prefix('admin/')->namespace('Admin')->group(function(){
         Route::put("{id}/", "PeopleEventController@update");
         Route::delete("{id}/", "PeopleEventController@destroy");
     });
-    Route::prefix('import/')->group(function(){
+    Route::prefix('imports/')->group(function(){
         Route::get("/", "ImportController@index");
         Route::get("{id}/", "ImportController@show");
         Route::post("/", "ImportController@store");
