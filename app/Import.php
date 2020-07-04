@@ -12,10 +12,12 @@ class Import extends Model
         'about'
     ];
 
-    protected $rules = [
-        'about' => ['required', 'max:255'],
-        'file' => ['required', 'file']
-    ];
+    public function rules(){
+        return [
+            'about' => ['required', 'max:255'],
+            'file' => ['required', 'file']
+        ];
+    }
 
     public function people(){
         return $this->hasMany(People::class);
