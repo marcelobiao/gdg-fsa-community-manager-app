@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Exception;
 use App\Import;
 use App\Exceptions\ImportException;
+use App\Utils\SymplaImporterETL;
 
 class ImportController extends Controller
 {
@@ -52,9 +53,13 @@ class ImportController extends Controller
             }
 
             //TODO: Importar Registros do arquivo
-            $import = $this->model->create($data);
 
-            return  response()->json($import);
+            //$import = $this->model->create($data);
+            $file = $request->file('file');
+            $event_id = 1;
+            $this->symplaFileImport($file, $event_id);
+
+            return  response()->json("Okaqui");
         }catch(ImportException $ex){
             return response()->json(['error' => $ex->getMessage()], Response::HTTP_BAD_REQUEST);
         }catch(Exception $ex){
@@ -96,5 +101,10 @@ class ImportController extends Controller
         }catch(Exception $ex){
             return response()->json(['error' => $ex->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
+
+    public function symplaFileImport($file, $event_id){
+        $importer = new SymplaImporterETL($file, $event_id);
+        $importer->import();
     }
 }
