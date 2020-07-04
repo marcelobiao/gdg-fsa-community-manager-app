@@ -54,12 +54,12 @@ class ImportController extends Controller
 
             //TODO: Importar Registros do arquivo
 
-            //$import = $this->model->create($data);
+            $import = $this->model->create($data);
             $file = $request->file('file');
             $event_id = 1;
-            $this->symplaFileImport($file, $event_id);
+            $this->symplaFileImport($file, $event_id, $import->id);
 
-            return  response()->json("Okaqui");
+            return response()->json("Okaqui");
         }catch(ImportException $ex){
             return response()->json(['error' => $ex->getMessage()], Response::HTTP_BAD_REQUEST);
         }catch(Exception $ex){
@@ -103,8 +103,8 @@ class ImportController extends Controller
         }
     }
 
-    public function symplaFileImport($file, $event_id){
-        $importer = new SymplaImporterETL($file, $event_id);
+    public function symplaFileImport($file, $event_id, $import_id){
+        $importer = new SymplaImporterETL($file, $event_id, $import_id);
         $importer->import();
     }
 }
