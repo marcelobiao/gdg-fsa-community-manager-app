@@ -56,8 +56,8 @@ class ImportController extends Controller
 
             $import = $this->model->create($data);
             $file = $request->file('file');
-            $event_id = 1;
-            $this->symplaFileImport($file, $event_id, $import->id);
+
+            $this->symplaFileImport($file, $data['event_id'], $import->id);
 
             return response()->json("Registros importados com sucesso!");
         }catch(ImportException $ex){
