@@ -40,7 +40,7 @@ class CreatePeopleEventTable extends Migration
             $table->boolean('check_in')->default(false);
             $table->timestamp('check_in_date')->nullable(true);
             $table->string('discount_code')->nullable(true);
-            $table->enum('payment_method', ['gratis', 'cartão de crédito', 'boleto bancário', 'adicionado manualmente']);
+            $table->enum('payment_method', ['gratis', 'cartão de crédito', 'boleto bancário', 'adicionado manualmente', 'débito online']);
 
             $table->unsignedBigInteger('import_id')->nullable(true);
             $table->foreign('import_id')
