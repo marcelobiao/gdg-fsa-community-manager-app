@@ -29,20 +29,20 @@ class People_event extends Model
 
     public function rules(){
         return [
-        'event_id'              => ['required', 'exists:events,id'],
-        'people_id'             => ['required', 'exists:people,id'],
-        'registration_order'    => ['required', 'integer'],
-        'ticket_hash'           => ['required', 'max:255'],
-        'ticket_type'           => ['required', 'max:255'],
-        'ticket_value'          => ['required', 'numeric'],
-        'purchase_date'         => ['required', 'date'],
-        'order_hash'            => ['required', 'max:255'],
-        'payment_status'        => ['required', 'in:Aprovado,Não pago,Cancelado'],
-        'check_in'              => ['required', 'boolean'],
-        'check_in_date'         => ['date'],
-        'discount_code'         => ['max:255'],
-        'payment_method'        => ['required', 'in:gratis,cartão de crédito,boleto bancário,adicionado manualmente'],
-        'import_id'             => ['exists:imports,id'],
+            'event_id'              => ['required', 'exists:events,id'],
+            'people_id'             => ['required', 'exists:people,id'],
+            'registration_order'    => ['required', 'integer'],
+            'ticket_hash'           => ['required', 'max:255'],
+            'ticket_type'           => ['required', 'max:255'],
+            'ticket_value'          => ['required', 'numeric'],
+            'purchase_date'         => ['required', 'date'],
+            'order_hash'            => ['required', 'max:255'],
+            'payment_status'        => ['required', 'in:Aprovado,Não pago,Cancelado'],
+            'check_in'              => ['required', 'boolean'],
+            'check_in_date'         => ['date'],
+            'discount_code'         => ['max:255'],
+            'payment_method'        => ['required', 'in:gratis,cartão de crédito,boleto bancário,adicionado manualmente', 'débito online'],
+            'import_id'             => ['exists:imports,id'],
         ];
     }
 
