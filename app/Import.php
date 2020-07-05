@@ -15,7 +15,8 @@ class Import extends Model
     public function rules(){
         return [
             'about' => ['required', 'max:255'],
-            'file' => ['required', 'file']
+            'file' => ['required', 'file'],
+            'event_id' => ['required', 'exists:events,id']
         ];
     }
 
