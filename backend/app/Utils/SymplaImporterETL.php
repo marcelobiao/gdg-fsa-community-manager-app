@@ -21,7 +21,6 @@ class SymplaImporterETL
     public function import(){
         $this->extract();
         $this->transform();
-        //dd($this->data);
         $this->load();
 
         return true;

@@ -52,8 +52,6 @@ class ImportController extends Controller
                 return response()->json($validator->errors(), Response::HTTP_BAD_REQUEST);
             }
 
-            //TODO: Importar Registros do arquivo
-
             $import = $this->model->create($data);
             $file = $request->file('file');
 
