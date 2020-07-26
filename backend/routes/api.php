@@ -18,7 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('admin/')->namespace('Admin')->group(function(){
+Route::post('/register', 'AuthController@register');
+
+Route::post('/login', 'AuthController@login');
+
+Route::post('/logout', 'AuthController@logout');
+
+Route::prefix('admin/')->namespace('Admin')->middleware('jwt.auth')->group(function(){
     Route::prefix('events/')->group(function(){
         Route::get("/", "EventController@index");
         Route::get("{id}/", "EventController@show");
