@@ -71,6 +71,15 @@ class EventsDateImportSeeder extends Seeder
                 'about' => 'Importação dos inscritos do DevFest 2019',
                 'file_path' => 'Lista de participantes - GDG_DevFest_FSA_2019 (614974).csv'              
             ],            
+            //JSDay 2020
+            [
+                'name' => 'JSDay 2020',
+                'date' => '',
+                'place' => '',
+                'city' => '',
+                'about' => 'Importação dos inscritos do JSDay 2020',
+                'file_path' => 'Lista de participantes - GDG_JSDay_Feira_de_Santana_2020 (887489).csv'              
+            ],
         ];
 
         foreach($imports as $import){
