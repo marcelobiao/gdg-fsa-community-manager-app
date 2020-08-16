@@ -52,5 +52,6 @@ Route::prefix('admin/')->namespace('Admin')->middleware('jwt.auth')->group(funct
         Route::post("/", "ImportController@store");
         Route::put("{id}/", "ImportController@update");
         Route::delete("{id}/", "ImportController@destroy");
+        Route::post("/manualCheckIn/", "ImportController@manualCheckIn");
     });
 });
