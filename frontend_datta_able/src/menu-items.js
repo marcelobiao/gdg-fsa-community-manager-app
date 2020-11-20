@@ -215,21 +215,7 @@ export default {
                     url: '#',
                     classes: 'nav-item disabled',
                     icon: 'feather icon-power'
-                },
-                /*{
-                    id: 'buy-now',
-                    title: 'Buy Now',
-                    type: 'item',
-                    icon: 'feather icon-user',
-                    classes: 'nav-item',
-                    url: 'https://codedthemes.com',
-                    target: true,
-                    external: true,
-                    badge: {
-                        title: 'v1.0',
-                        type: 'label-primary'
-                    }
-                }*/
+                }
             ]
         }
     ]
