@@ -30,9 +30,9 @@ const Login = () => {
     };
     try {
       const response = await api.post('/login', data);
-      console.log(response);
+      localStorage.setItem('access_token', response.data.access_token);
     } catch (err) {
-      alert('Erro ao cadastrar caso, tente novamente.');
+      alert('Erro ao realizar login, tente novamente.');
     }
   }
   return (
