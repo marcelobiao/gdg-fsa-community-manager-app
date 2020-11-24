@@ -10,6 +10,12 @@ export default [
     }
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Eventos',
+    to: '/events',
+    icon: 'cil-calendar'
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
   },
