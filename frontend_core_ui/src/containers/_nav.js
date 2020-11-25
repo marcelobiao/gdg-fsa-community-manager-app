@@ -16,6 +16,12 @@ export default [
     icon: 'cil-calendar'
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Login',
+    to: '/login',
+    icon: 'cil-calendar'
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
   },
