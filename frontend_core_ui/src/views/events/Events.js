@@ -17,13 +17,21 @@ const fields = ['id', 'name', 'date', 'place', 'city','actions'];
 const editEvent = (index) => {
   
 }
-const deleteEvent = (index) => {
- 
-}
+
 
 const Events = () => {
 
   const [events, setEvents] = useState([]);
+
+  const deleteEvent = (index) => {
+    api.delete(`/admin/events/${index}`).then(response=>{
+     setEvents(events.filter((event)=>{
+       return event.id!==index;
+     }))
+    }).catch(response=>{
+      console.log(response);
+    })
+   }
 
   useEffect(() => {
     api.get('/admin/events')
@@ -59,7 +67,7 @@ const Events = () => {
                       variant="ghost"
                       shape="square"
                       size=""
-                      onClick={()=>{editEvent(index)}}
+                      onClick={()=>{editEvent(item.id)}}
                     >
                       Edit
                     </CButton>
@@ -68,7 +76,7 @@ const Events = () => {
                       variant="ghost"
                       shape="square"
                       size=""
-                      onClick={()=>{deleteEvent(index)}}
+                      onClick={()=>{deleteEvent(item.id)}}
                     >
                       Delete
                     </CButton>
