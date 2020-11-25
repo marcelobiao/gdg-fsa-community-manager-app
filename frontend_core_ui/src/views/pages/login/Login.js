@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -22,6 +22,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const history = useHistory();
+
   async function handleNewLogin(e) {
     e.preventDefault();
     const data = {
@@ -31,7 +33,7 @@ const Login = () => {
     try {
       const response = await api.post('/login', data);
       localStorage.setItem('access_token', response.data.access_token);
-      alert('Login realizado com sucesso!');
+      history.push('/dashboard');
     } catch (err) {
       alert('Erro ao realizar login, tente novamente.');
     }
