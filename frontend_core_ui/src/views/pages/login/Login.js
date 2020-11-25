@@ -31,6 +31,7 @@ const Login = () => {
     try {
       const response = await api.post('/login', data);
       localStorage.setItem('access_token', response.data.access_token);
+      alert('Login realizado com sucesso!');
     } catch (err) {
       alert('Erro ao realizar login, tente novamente.');
     }
