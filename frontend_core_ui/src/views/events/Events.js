@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CBadge,
   CCard,
@@ -9,7 +9,7 @@ import {
   CRow
 } from '@coreui/react'
 
-import usersData from '../users/UsersData'
+import api from '../../services/api'
 
 const getBadge = status => {
   switch (status) {
@@ -21,38 +21,37 @@ const getBadge = status => {
   }
 }
 
-const fields = ['id','name','date','place','city','created_at','updated_at']
+const fields = ['id', 'name', 'date', 'place', 'city']
 
 const Events = () => {
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    api.get('/admin/events')
+      .then(response => {
+        console.log(response);
+        setEvents(response.data);
+      }).catch(response => {
+        console.log(response);
+      })
+  }, []);
 
   return (
     <>
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
-              Combined All Table
-            </CCardHeader>
             <CCardBody>
               <CDataTable
-                items={usersData}
+                items={events}
                 fields={fields}
                 hover
                 striped
                 bordered
-                size="sm"
+                size="lg"
                 itemsPerPage={10}
                 pagination
-                scopedSlots={{
-                  'status':
-                    (item) => (
-                      <td>
-                        <CBadge color={getBadge(item.status)}>
-                          {item.status}
-                        </CBadge>
-                      </td>
-                    )
-                }}
               />
             </CCardBody>
           </CCard>
