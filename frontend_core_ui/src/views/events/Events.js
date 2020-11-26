@@ -8,6 +8,7 @@ import {
   CRow,
   CCol,
   CModal,
+  CCardHeader,
   CModalBody,
   CModalFooter,
   CModalHeader,
@@ -24,7 +25,7 @@ import api from "../../services/api";
 
 const fields = ["id", "name", "date", "place", "city", "actions"];
 
-const editEvent = (index) => {};
+const editEvent = (index) => { };
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -79,6 +80,17 @@ const Events = () => {
   return (
     <>
       <CCard>
+        <CCardHeader>
+          <CButton
+            color="primary"
+            shape="square"
+            size="sm"
+            onClick={() => setPrimary(!primary)}
+          >
+            Create Event
+            </CButton>
+        </CCardHeader>
+
         <CCardBody>
           <CDataTable
             items={events}
@@ -121,18 +133,7 @@ const Events = () => {
             }}
           />
         </CCardBody>
-        <CRow className="mx-auto" style={{ width: "200px" }}>
-          <CCol col="12">
-            <CButton
-              color="primary"
-              shape="square"
-              size="sm"
-              onClick={() => setPrimary(!primary)}
-            >
-              Create Event
-            </CButton>
-          </CCol>
-        </CRow>
+
         <CModal
           show={primary}
           onClose={() => setPrimary(!primary)}
