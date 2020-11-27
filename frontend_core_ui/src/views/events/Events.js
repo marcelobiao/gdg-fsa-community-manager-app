@@ -35,11 +35,20 @@ const Events = () => {
   const [secondary, setSecondary] = useState(false);
   const [requisition, setRequisition] = useState(false);
 
+  const resetStates = () =>{
+    setId("");
+    setName("");
+    setDate("");
+    setPlace("");
+    setcity("");
+  }
+
   async function handleCreateEvent() {
    const event = { name, date, place, city };
     try {
       await api.post("/admin/events/", event);
       setRequisition(!requisition);
+      resetStates();
       setPrimary(!primary);
     } catch (error) {
       console.log(error);
@@ -59,6 +68,7 @@ const Events = () => {
       .catch((response) => {
         console.log(response);
       });
+   
   };
 
 const openEditEventModal = ({ id,name, date, place, city }) =>{
@@ -78,6 +88,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
    try{
     await api.put(`/admin/events/${id}`, event);
     console.log("editado com sucesso");
+    resetStates();
     setRequisition(!requisition);
    }catch(error){
      console.log("erro")
@@ -150,7 +161,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
               size="sm"
               onClick={() => setPrimary(!primary)}
             >
-              Create Event
+              Criar Evento
             </CButton>
           </CCol>
         </CRow>
@@ -166,15 +177,14 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
             <CForm>
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">Name</CLabel>
+                  <CLabel htmlFor="text-input">Nome</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                  
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -182,30 +192,28 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="date-input">Date</CLabel>
+                  <CLabel htmlFor="date-input">Data do evento</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     type="date"
-                    name="date-input"
-                    placeholder="date"
+                    name="date-input"                 
                   />
                 </CCol>
               </CFormGroup>
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">Place</CLabel>
+                  <CLabel htmlFor="text-input">Local</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                 
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -213,15 +221,14 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">City</CLabel>
+                  <CLabel htmlFor="text-input">Cidade</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={city}
                     onChange={(e) => setcity(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                 
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -230,7 +237,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
           </CModalBody>
           <CModalFooter>
             <CButton color="primary" onClick={handleCreateEvent}>
-              Create
+              Criar Evento
             </CButton>
             <CButton color="secondary" onClick={() => setPrimary(!primary)}>
               Cancel
@@ -243,7 +250,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
           color="primary"
         >
           <CModalHeader closeButton>
-            <CModalTitle>Edit</CModalTitle>
+            <CModalTitle>Editar</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <CForm>
@@ -265,30 +272,28 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="date-input">Date</CLabel>
+                  <CLabel htmlFor="date-input">Data do Evento</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={date}
                     onChange={(e) => setDate(e.value)}
                     type="date"
-                    name="date-input"
-                    placeholder="date"
+                    name="date-input"                    
                   />
                 </CCol>
               </CFormGroup>
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">Place</CLabel>
+                  <CLabel htmlFor="text-input">Local</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                   
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -296,7 +301,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">City</CLabel>
+                  <CLabel htmlFor="text-input">Cidade</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
@@ -304,7 +309,6 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     onChange={(e) => setcity(e.target.value)}
                     type="text"
                     name="text-input"
-                    placeholder="Text"
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
