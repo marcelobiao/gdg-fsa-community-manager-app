@@ -27,7 +27,7 @@ const editEvent = (index) => { };
 
 const Events = () => {
   const [events, setEvents] = useState([]);
-  const [id,setId] = useState("");
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [place, setPlace] = useState("");
@@ -36,7 +36,7 @@ const Events = () => {
   const [secondary, setSecondary] = useState(false);
   const [requisition, setRequisition] = useState(false);
 
-  const resetStates = () =>{
+  const resetStates = () => {
     setId("");
     setName("");
     setDate("");
@@ -45,7 +45,7 @@ const Events = () => {
   }
 
   async function handleCreateEvent() {
-   const event = { name, date, place, city };
+    const event = { name, date, place, city };
     try {
       await api.post("/admin/events/", event);
       setRequisition(!requisition);
@@ -69,32 +69,32 @@ const Events = () => {
       .catch((response) => {
         console.log(response);
       });
-   
+
   };
 
-const openEditEventModal = ({ id,name, date, place, city }) =>{
-  setSecondary(!secondary);
-  var data = date.replace("00:00:00","");
-  data=data.replace(" ","")
-  setId(id);
-  setName(name);
-  setDate(data);
-  setPlace(place);
-  setcity(city);
-}
+  const openEditEventModal = ({ id, name, date, place, city }) => {
+    setSecondary(!secondary);
+    var data = date.replace("00:00:00", "");
+    data = data.replace(" ", "")
+    setId(id);
+    setName(name);
+    setDate(data);
+    setPlace(place);
+    setcity(city);
+  }
 
-  const editEvent = async() => {
-     const event = { name, date, place, city };
-   
-   try{
-    await api.put(`/admin/events/${id}`, event);
-    console.log("editado com sucesso");
-    resetStates();
-    setRequisition(!requisition);
-   }catch(error){
-     console.log("erro")
-   }
-   setSecondary(!secondary);
+  const editEvent = async () => {
+    const event = { name, date, place, city };
+
+    try {
+      await api.put(`/admin/events/${id}`, event);
+      console.log("editado com sucesso");
+      resetStates();
+      setRequisition(!requisition);
+    } catch (error) {
+      console.log("erro")
+    }
+    setSecondary(!secondary);
   };
 
   useEffect(() => {
@@ -187,7 +187,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text"
-                    name="text-input"                  
+                    name="text-input"
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -202,7 +202,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     type="date"
-                    name="date-input"                 
+                    name="date-input"
                   />
                 </CCol>
               </CFormGroup>
@@ -216,7 +216,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                     type="text"
-                    name="text-input"                 
+                    name="text-input"
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -231,7 +231,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={city}
                     onChange={(e) => setcity(e.target.value)}
                     type="text"
-                    name="text-input"                 
+                    name="text-input"
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -282,7 +282,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={date}
                     onChange={(e) => setDate(e.value)}
                     type="date"
-                    name="date-input"                    
+                    name="date-input"
                   />
                 </CCol>
               </CFormGroup>
@@ -296,7 +296,7 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                     type="text"
-                    name="text-input"                   
+                    name="text-input"
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
