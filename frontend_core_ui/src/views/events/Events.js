@@ -129,11 +129,14 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
           <CDataTable
             items={events}
             fields={fields}
+            columnFilter
+            tableFilter
             hover
             striped
             bordered
             size="lg"
             itemsPerPage={10}
+            sorter
             pagination
             scopedSlots={{
               actions: (item, index) => {
