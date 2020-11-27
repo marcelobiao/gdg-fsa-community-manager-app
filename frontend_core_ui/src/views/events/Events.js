@@ -29,21 +29,29 @@ const editEvent = (index) => { };
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [id,setId] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [place, setPlace] = useState("");
   const [city, setcity] = useState("");
   const [primary, setPrimary] = useState(false);
+  const [secondary, setSecondary] = useState(false);
   const [requisition, setRequisition] = useState(false);
 
-  async function handleCreateEvent(e) {
-    e.preventDefault();
+  const resetStates = () =>{
+    setId("");
+    setName("");
+    setDate("");
+    setPlace("");
+    setcity("");
+  }
 
-    const event = { name, date, place, city };
-
+  async function handleCreateEvent() {
+   const event = { name, date, place, city };
     try {
       await api.post("/admin/events/", event);
       setRequisition(!requisition);
+      resetStates();
       setPrimary(!primary);
     } catch (error) {
       console.log(error);
@@ -63,6 +71,32 @@ const Events = () => {
       .catch((response) => {
         console.log(response);
       });
+   
+  };
+
+const openEditEventModal = ({ id,name, date, place, city }) =>{
+  setSecondary(!secondary);
+  var data = date.replace("00:00:00","");
+  data=data.replace(" ","")
+  setId(id);
+  setName(name);
+  setDate(data);
+  setPlace(place);
+  setcity(city);
+}
+
+  const editEvent = async() => {
+     const event = { name, date, place, city };
+   
+   try{
+    await api.put(`/admin/events/${id}`, event);
+    console.log("editado com sucesso");
+    resetStates();
+    setRequisition(!requisition);
+   }catch(error){
+     console.log("erro")
+   }
+   setSecondary(!secondary);
   };
 
   useEffect(() => {
@@ -111,7 +145,7 @@ const Events = () => {
                       shape="square"
                       size=""
                       onClick={() => {
-                        editEvent(item.id);
+                        openEditEventModal(item);
                       }}
                     >
                       Edit
@@ -133,7 +167,6 @@ const Events = () => {
             }}
           />
         </CCardBody>
-
         <CModal
           show={primary}
           onClose={() => setPrimary(!primary)}
@@ -146,15 +179,14 @@ const Events = () => {
             <CForm>
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">Name</CLabel>
+                  <CLabel htmlFor="text-input">Nome</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                  
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -162,30 +194,28 @@ const Events = () => {
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="date-input">Date</CLabel>
+                  <CLabel htmlFor="date-input">Data do evento</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
                     type="date"
-                    name="date-input"
-                    placeholder="date"
+                    name="date-input"                 
                   />
                 </CCol>
               </CFormGroup>
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">Place</CLabel>
+                  <CLabel htmlFor="text-input">Local</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={place}
                     onChange={(e) => setPlace(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                 
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -193,15 +223,14 @@ const Events = () => {
 
               <CFormGroup row>
                 <CCol md="3">
-                  <CLabel htmlFor="text-input">City</CLabel>
+                  <CLabel htmlFor="text-input">Cidade</CLabel>
                 </CCol>
                 <CCol xs="12" md="9">
                   <CInput
                     value={city}
                     onChange={(e) => setcity(e.target.value)}
                     type="text"
-                    name="text-input"
-                    placeholder="Text"
+                    name="text-input"                 
                   />
                   <CFormText>This is a help text</CFormText>
                 </CCol>
@@ -210,7 +239,7 @@ const Events = () => {
           </CModalBody>
           <CModalFooter>
             <CButton color="primary" onClick={handleCreateEvent}>
-              Create
+              Criar Evento
             </CButton>
             <CButton color="secondary" onClick={() => setPrimary(!primary)}>
               Cancel
