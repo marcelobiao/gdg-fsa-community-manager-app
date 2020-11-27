@@ -5,7 +5,6 @@ import {
   CCardBody,
   CDataTable,
   CButton,
-  CRow,
   CCol,
   CModal,
   CCardHeader,
@@ -17,7 +16,6 @@ import {
   CFormGroup,
   CFormText,
   CLabel,
-  CTextarea,
   CInput,
 } from "@coreui/react";
 
@@ -72,31 +70,6 @@ const Events = () => {
         console.log(response);
       });
    
-  };
-
-const openEditEventModal = ({ id,name, date, place, city }) =>{
-  setSecondary(!secondary);
-  var data = date.replace("00:00:00","");
-  data=data.replace(" ","")
-  setId(id);
-  setName(name);
-  setDate(data);
-  setPlace(place);
-  setcity(city);
-}
-
-  const editEvent = async() => {
-     const event = { name, date, place, city };
-   
-   try{
-    await api.put(`/admin/events/${id}`, event);
-    console.log("editado com sucesso");
-    resetStates();
-    setRequisition(!requisition);
-   }catch(error){
-     console.log("erro")
-   }
-   setSecondary(!secondary);
   };
 
 const openEditEventModal = ({ id,name, date, place, city }) =>{
@@ -195,18 +168,6 @@ const openEditEventModal = ({ id,name, date, place, city }) =>{
             }}
           />
         </CCardBody>
-        <CRow className="mx-auto" style={{ width: "200px" }}>
-          <CCol col="12">
-            <CButton
-              color="primary"
-              shape="square"
-              size="sm"
-              onClick={() => setPrimary(!primary)}
-            >
-              Criar Evento
-            </CButton>
-          </CCol>
-        </CRow>
         <CModal
           show={primary}
           onClose={() => setPrimary(!primary)}
