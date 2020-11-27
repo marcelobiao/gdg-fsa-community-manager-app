@@ -280,7 +280,7 @@ const Events = () => {
                 <CCol xs="12" md="9">
                   <CInput
                     value={date}
-                    onChange={(e) => setDate(e.value)}
+                    onChange={(e) => setDate(e.target.value)}
                     type="date"
                     name="date-input"
                   />
