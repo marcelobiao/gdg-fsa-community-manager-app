@@ -84,7 +84,7 @@ const Events = () => {
           <CButton
             color="primary"
             shape="square"
-            size="sm"
+            size="md"
             onClick={() => setPrimary(!primary)}
           >
             Create Event
@@ -217,6 +217,7 @@ const Events = () => {
             </CButton>
           </CModalFooter>
         </CModal>
+        
       </CCard>
     </>
   );
