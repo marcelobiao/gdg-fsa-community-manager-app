@@ -23,9 +23,7 @@ import api from "../../services/api";
 
 const fields = ["id", "name", "date", "place", "city", "actions"];
 
-const editEvent = (index) => { };
-
-const Events = () => {
+export default function Events(props) {
   const [events, setEvents] = useState([]);
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -329,5 +327,3 @@ const Events = () => {
     </>
   );
 };
-
-export default Events;
