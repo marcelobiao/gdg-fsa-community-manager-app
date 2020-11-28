@@ -40,7 +40,6 @@ const User = React.lazy(() => import('./views/users/User'));
 const EventsOLD = React.lazy(() => import('./views/events/Events'));
 const Events = React.lazy(() => import('./views/events'));
 const People = React.lazy(() => import('./views/people'));
-const GridPanel = React.lazy(() => import('./views/components/GridPainel'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -87,7 +86,6 @@ const routes = [
   { path: '/eventsold', name: 'EventosOLD', component: EventsOLD },
   { path: '/events', name: 'Eventos', component: Events },
   { path: '/people', name: 'Pessoas', component: People },
-  { path: '/grid', name: 'Grid', component: GridPanel }
 ];
 
 export default routes;
