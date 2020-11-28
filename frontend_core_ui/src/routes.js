@@ -37,7 +37,10 @@ const Typography = React.lazy(() => import('./views/theme/typography/Typography'
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
-const Events = React.lazy(() => import('./views/events/Events'));
+const EventsOLD = React.lazy(() => import('./views/events/Events'));
+const Events = React.lazy(() => import('./views/events'));
+const People = React.lazy(() => import('./views/people'));
+const GridPanel = React.lazy(() => import('./views/components/GridPainel'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -80,7 +83,11 @@ const routes = [
   { path: '/widgets', name: 'Widgets', component: Widgets },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
-  { path: '/events', name: 'Eventos', component: Events }
+
+  { path: '/eventsold', name: 'EventosOLD', component: EventsOLD },
+  { path: '/events', name: 'Eventos', component: Events },
+  { path: '/people', name: 'Pessoas', component: People },
+  { path: '/grid', name: 'Grid', component: GridPanel }
 ];
 
 export default routes;

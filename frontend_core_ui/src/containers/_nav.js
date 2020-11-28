@@ -11,8 +11,21 @@ export default [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Eventos',
+    name: 'Pessoas',
+    to: '/people',
+    icon: 'cil-calendar'
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Events',
     to: '/events',
+    icon: 'cil-calendar'
+  },
+
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'EventosOLD',
+    to: '/eventsold',
     icon: 'cil-calendar'
   },
   {
@@ -21,6 +34,7 @@ export default [
     to: '/login',
     icon: 'cil-calendar'
   },
+  
   {
     _tag: 'CSidebarNavTitle',
     _children: ['Theme']
