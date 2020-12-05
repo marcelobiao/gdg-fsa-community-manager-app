@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Mockery;
 use Tests\TestCase;
 
-class ShowEventTest extends TestCase
-{ 
+class CreateEventTest extends TestCase
+{
 
     /**
      * Testa a criação de um novo Event
@@ -35,7 +35,7 @@ class ShowEventTest extends TestCase
                 'id' => '2',
             ])
         ]);
-        
+
         //Mockando Event
         $this->mock(Event::class, function ($mock) use ($eventsModel) {
             $mock->shouldReceive('find')
